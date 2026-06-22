@@ -1,10 +1,8 @@
-use std::ops::Deref;
-
 fn main() {
-    let s1 = String::from("hello");
-    let h = s1[0];
+    let my_name = "Pascal";
+    greet(my_name);
 }
 
-fn say_hello(s: &str) {
-    println!("{}",s);
+fn greet(name: String) {
+    println!("Hello, {}!", name);
 }
