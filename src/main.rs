@@ -1,18 +1,9 @@
-#[derive(Debug)]
-struct Rectangle {
-    width: u32,
-    height: u32,
+fn add<T>(a:T, b:T) -> T {
+    a + b
 }
 
 fn main() {
-    let mut collection : [i32; 5] = [1, 2, 3, 4, 5];
-    //let mut collection : [String; 5] = std::array::from_fn(|_| String::from("Hello, World!"));
-    for i in 0..collection.len() {
-        println!("{}", collection[i]);
-        let j = collection[i];
-        collection[i] = j;
-    }
-    let i = collection[1];
-    collection[1] = i;
-    println!("{:?}", collection);
+    println!("add i8: {}", add(2i8, 3i8));
+    println!("add i32: {}", add(20, 30));
+    println!("add f64: {}", add(1.23, 1.23));
 }
