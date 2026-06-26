@@ -1,5 +1,16 @@
+#[derive(Debug)]
+struct ImportantExcerpt<'a> {
+    part: &'a str,
+}
+
 fn main() {
-    let mut vec = vec![1.0, 5.6, 10.3, 2.0, 15f32];
-    vec.sort_unstable();
-    assert_eq!(vec, vec![1.0, 2.0, 5.6, 10.3, 15f32]);
+    let i;
+    {
+        let novel = String::from("Call me Ishmael. Some years ago...");
+        let first_sentence = novel.split('.').next().expect("Could not find a '.'");
+        i = ImportantExcerpt {
+            part: first_sentence,
+        };
+    }
+    println!("{:?}",i);
 }
