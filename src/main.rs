@@ -1,28 +1,14 @@
-use std::fs::File;
+use futures::executor::block_on;
 
-//  让我来实现一个简单的宏！
-
-#[macro_export]
-macro_rules! vec {
-    ($($x:expr), *) => {
-        let mut temp_vec = Vec::new();
-        $(
-        temp_vec.push($x);
-        )*
-        temp_vec
-    };
+async fn hello_world() {
+    hello_cat().await;
+    println!("hello, world!");
 }
 
+async fn hello_cat() {
+    println!("hello, kitty!");
+}
 fn main() {
-    let f = File::open("hello.txt")?;
-}
-
-fn get_two_sites() {
-    // 创建两个新线程执行任务
-    let thread_one = thread::spawn(|| download("https://course.rs"));
-    let thread_two = thread::spawn(|| download("https://fancy.rs"));
-
-    // 等待两个线程的完成
-    thread_one.join().expect("thread one panicked");
-    thread_two.join().expect("thread two panicked");
+    let future = hello_world();
+    block_on(future);
 }
